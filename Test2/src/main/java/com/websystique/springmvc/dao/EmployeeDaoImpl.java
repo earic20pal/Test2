@@ -42,7 +42,7 @@ public class EmployeeDaoImpl extends AbstractDao<Integer, TcDesc> implements Emp
 
 	public List<String> findAllTestCaseIds(String Module) {
 		Criteria crit= getSession().createCriteria(TcStatus.class).add(Restrictions.eq("module", Module));
-		crit.setMaxResults(10);
+//		crit.setMaxResults(10);
 		List<TcStatus> list= crit.list();
 		Set<String> set= new LinkedHashSet<String>();
 		for(TcStatus obj: list) {

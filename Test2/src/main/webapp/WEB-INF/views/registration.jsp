@@ -1,10 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%-- JSTL --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<%-- Spring security taglibs--%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>University Enrollments</title>
+<title>Automation Reports</title>
 
 <style>
 tr:first-child {
@@ -17,70 +23,64 @@ tr:first-child {
 
 
 <body>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script
+		src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script>
-		//bodyonload();
-		function bodyonload() {
-
-			$(document).ready(function() {
-				$.ajax({
-					type : "GET",
-					url : "./?method=getAlltcIDs",
-					datatype : "html",
-					/* data: {category: $category.attr("selectedIndex") }, */
-					success : function(data) {
-						$("#TcID").html(data)
-					}
-				});
-			});
-		}
-
-		function GetTcID() {
+	$(document).ready(function(){
+		
+	    $("form").submit(function(){
+	    	$('#loading').html('Loding your Result Please Wait.....');
+	    });
+	});
+		/* function GetTcID() {
 			
-			var state = $('#module').val();
-			var link = $(this).attr("href");
+			var module = $('#module').val();
 			$.ajax({
-				url :'./getTcidsForSelectedModule',
-				method : 'get',
-				ContentType : 'text/plain',
-				success : function(response) {
-					var options = '';
-					if (response != null) {
-						$(response).each(
-								function(index, value) {
-									options = options + '<option>' + value
-											+ '</option>';
-								});
-						$('#TcID').html(options);
-					}
-					$('#loading').html('');
+				url : './getTCForSelectedModule',
+				method : 'post',
+				datatype : "json",
+				data : {
+					'module' : module
+				},
+
+				success : function(data) {
+					console.log(data);
+					 var opts =  jQuery.parseJSON(data);
+		                // Use jQuery's each to iterate over the opts value
+		                $.each(opts, function(i, d) {
+		                    // You will need to alter the below to get the right values from your json object.  Guessing that d.id / d.modelName are columns in your carModels data
+		                    $('#TCid').append('<option value="' + d + '">' + d+ '</option>');
+		                });
+
+			    },
+				error: function(e)
+				{
+					alert("error"+e.val())
 				}
+				
+					
 			});
 
-		}
+		} */
+		
 	</script>
 
 	<h2>Add TC in DB</h2>
-	
-	<form method="post" modelAttribute="employee">
+	<%-- <c:url var="home" value="/" scope="request" /> --%>
+	<form method="post" action="${pageContext.request.contextPath}/list">
 		<table>
 			<tr>
-			<td>
-				<select name="module" id="module" onchange="GetTcID()">
-					<c:forEach items="${listCategory}" var="category">
-						<option value="${category}">${category}</option>
-					</c:forEach>
-				</select>
-				</td>
-				<td>
-					<Select id="TcID" name="TcID"></Select>
-				</td>
+				<td><select name="module" id="module">
+						<c:forEach items="${listCategory}" var="category">
+							<option value="${category}">${category}</option>
+						</c:forEach>
+				</select></td>
+				<td><input type="submit" value="Redirect Page" /></td>
+				<td><div id="loading"></div></td> <>
 			</tr>
 		</table>
-
-
-		<!--  <input type="button" id="showpair" name="showpair" onclick=showdata()/>-->
-		<div id="ShowPairs" />
 	</form>
+	<script
+		src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </body>
 </html>

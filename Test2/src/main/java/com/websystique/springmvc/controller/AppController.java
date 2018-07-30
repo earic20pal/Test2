@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,9 +39,11 @@ public class AppController {
 
 	/*
 	 * This method will list all existing employees.
+	 * public String listEmployees(@RequestParam("module") String Module,ModelMap model) {
 	 */
-	@RequestMapping(value = {  "/list" }, method = RequestMethod.GET)
-	public String listEmployees(@RequestParam("Module") String Module,ModelMap model) {
+	@RequestMapping(value = {  "/list" }, method = RequestMethod.POST)
+	public String listEmployees(@RequestParam(value = "module", required = true) String Module,ModelMap model) {
+		System.out.println("Module name is "+Module);
 		List<Date> dates = service.getAllSortedDates();
 		List<String> tcids=service.getAllTestCaseIds(Module);
 		List<List<String>> result=new LinkedList<List<String>>();
