@@ -24,7 +24,7 @@ $(document).ready(function(){
 	    });
 });
 </script>
-	<h2>List of TestCases</h2>
+	<h2>List of TestCases Result</h2>
 	<form method="post" action="${pageContext.request.contextPath}/list">
 		<select id="module" name="module">
 			<option value="admin">Admin</option>
