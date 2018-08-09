@@ -9,6 +9,7 @@ import java.util.Set;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
@@ -30,14 +31,24 @@ public class EmployeeDaoImpl extends AbstractDao<Integer, TcDesc> implements Emp
 	}
 
 	public List<Date> findAllDatesTCRun() {
-		Criteria crit= getSession().createCriteria(TcStatus.class);
+		/*Criteria crit= getSession().createCriteria(TcStatus.class);
+		crit.addOrder(Order.desc("date"));
 		List<TcStatus> list= crit.list();
 		Set<Date> set= new LinkedHashSet<Date>();
+		int i=0;
 		for(TcStatus obj: list) {
 			set.add(obj.getDate());
+			if(set.size()>10)
+			{
+				break;
+			}
 		}
 		 List<Date> li= new ArrayList<Date>(set);
-		return li;
+		return li;*/
+		Query query= getSession().createSQLQuery("Select distinct date from Tc_status order by date desc");
+		query.setMaxResults(15);
+		List<Date> list= query.list();
+		return list;
 	}
 
 	public List<String> findAllTestCaseIds(String Module) {

@@ -32,40 +32,22 @@ tr:first-child {
 	    	$('#loading').html('Loding your Result Please Wait.....');
 	    });
 	});
-		/* function GetTcID() {
+	
+	function TestCaseData()
+	{
+		$.ajax({
+			url:'./gotoAddTestDataPage',
+			method : 'post',
+			datatype : 'json'
 			
-			var module = $('#module').val();
-			$.ajax({
-				url : './getTCForSelectedModule',
-				method : 'post',
-				datatype : "json",
-				data : {
-					'module' : module
-				},
-
-				success : function(data) {
-					console.log(data);
-					 var opts =  jQuery.parseJSON(data);
-		                // Use jQuery's each to iterate over the opts value
-		                $.each(opts, function(i, d) {
-		                    // You will need to alter the below to get the right values from your json object.  Guessing that d.id / d.modelName are columns in your carModels data
-		                    $('#TCid').append('<option value="' + d + '">' + d+ '</option>');
-		                });
-
-			    },
-				error: function(e)
-				{
-					alert("error"+e.val())
-				}
-				
-					
-			});
-
-		} */
+			
+		});
+	}
+		
 		
 	</script>
 
-	<h2>Add TC in DB</h2>
+	<h2>Find Test Case Results</h2>
 	<%-- <c:url var="home" value="/" scope="request" /> --%>
 	<form method="post" action="${pageContext.request.contextPath}/list">
 		<table>
@@ -76,7 +58,8 @@ tr:first-child {
 						</c:forEach>
 				</select></td>
 				<td><input type="submit" value="Redirect Page" /></td>
-				<td><div id="loading"></div></td> <>
+				<input type="button" name="modify"id="modify" onclick="TestCaseData()"/>
+				<td><div id="loading"></div></td>
 			</tr>
 		</table>
 	</form>

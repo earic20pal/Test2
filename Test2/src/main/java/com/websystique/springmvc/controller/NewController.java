@@ -20,7 +20,7 @@ public class NewController {
 	 @Autowired
 	 EmployeeService service;
 	 
-	 @RequestMapping(value = "getTCForSelectedModule", method = RequestMethod.POST)
+	 @RequestMapping(value = "getTCForSelectedModule", method = RequestMethod.GET)
 		public @ResponseBody List<String> getTCForSelectedModule(@RequestParam(value = "module", required = true) String module) {
 		System.out.print("in get tcids method with ModuleName : "+module);
 		List<String> cityList = new ArrayList<String>();
