@@ -1,4 +1,4 @@
-package com.websystique.springmvc.controller;
+package com.mycompany.springmvc.controller;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -23,9 +23,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.websystique.springmvc.model.TcDesc;
-import com.websystique.springmvc.model.TcStatus;
-import com.websystique.springmvc.service.EmployeeService;
+import com.mycompany.springmvc.model.TcDesc;
+import com.mycompany.springmvc.model.TcStatus;
+import com.mycompany.springmvc.service.EmployeeService;
 
 @Controller
 @RequestMapping("/")

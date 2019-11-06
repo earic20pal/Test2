@@ -1,4 +1,4 @@
-package com.websystique.springmvc.dao;
+package com.mycompany.springmvc.dao;
 
 import java.io.Serializable;
 

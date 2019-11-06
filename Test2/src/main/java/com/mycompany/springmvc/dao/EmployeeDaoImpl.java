@@ -1,4 +1,4 @@
-package com.websystique.springmvc.dao;
+package com.mycompany.springmvc.dao;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,8 +16,8 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import com.websystique.springmvc.model.TcDesc;
-import com.websystique.springmvc.model.TcStatus;
+import com.mycompany.springmvc.model.TcDesc;
+import com.mycompany.springmvc.model.TcStatus;
 
 @Repository("employeeDao123")
 public class EmployeeDaoImpl extends AbstractDao<Integer, TcDesc> implements EmployeeDao {

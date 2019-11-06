@@ -1,11 +1,11 @@
-package com.websystique.springmvc.service;
+package com.mycompany.springmvc.service;
 
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-import com.websystique.springmvc.model.TcDesc;
-import com.websystique.springmvc.model.TcStatus;
+import com.mycompany.springmvc.model.TcDesc;
+import com.mycompany.springmvc.model.TcStatus;
 
 public interface EmployeeService {
 

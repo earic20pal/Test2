@@ -1,4 +1,4 @@
-package com.websystique.springmvc.configuration;
+package com.mycompany.springmvc.configuration;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;

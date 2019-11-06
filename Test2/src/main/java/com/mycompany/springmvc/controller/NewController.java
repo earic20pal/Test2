@@ -1,4 +1,4 @@
-package com.websystique.springmvc.controller;
+package com.mycompany.springmvc.controller;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.websystique.springmvc.service.EmployeeService;
+import com.mycompany.springmvc.service.EmployeeService;
 
 
 @RestController
